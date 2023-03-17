@@ -1,8 +1,11 @@
 package com.example.Challenge.controller;
 
 import com.example.Challenge.model.entity.Empleado.Empleado;
+import com.example.Challenge.model.entity.Empleado.Vacuna;
 import com.example.Challenge.model.pojo.dto.Empleado.EmpleadoDTO;
-import com.example.Challenge.service.EmpleadoService;
+import com.example.Challenge.model.pojo.dto.Vacuna.VacunaDTO;
+import com.example.Challenge.service.Empleado.EmpleadoService;
+import com.example.Challenge.service.Vacuna.VacunaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,23 +17,34 @@ import java.util.Optional;
 @RequestMapping("/empleado")
 public class EmpleadoController {
     private final EmpleadoService empleadoService;
+    private final VacunaService vacunaService;
 
     @Autowired
-    public EmpleadoController(EmpleadoService empleadoService) {
+    public EmpleadoController(EmpleadoService empleadoService, VacunaService vacunaService) {
         this.empleadoService = empleadoService;
+        this.vacunaService = vacunaService;
     }
-    @PutMapping("/fill/{id}")
+    @PatchMapping("/fill/{id}")
     public ResponseEntity<?> persist(@PathVariable("id") int id, @RequestBody EmpleadoDTO dto) {
         Optional<Empleado> empleado = empleadoService.findByIdEmpleado(id);
         if(empleado.isPresent()){
-            empleado.get().setCedula(dto.getCedula());
-            empleado.get().setNombres(dto.getNombres());
-            empleado.get().setApellidos(dto.getApellidos());
-            empleado.get().setCorreo(dto.getCorreo());
+            empleado.get().setFechaNacimiento(dto.getFechaNacimiento());
+            empleado.get().setDireccion(dto.getDireccion());
+            empleado.get().setTelefono(dto.getTelefono());
+            empleado.get().setEstadoVacunacion(dto.isEstadoVacunacion());
             empleadoService.update(empleado.get());
-            return new ResponseEntity<>("Éxito al actualizar", HttpStatus.OK);
+            return new ResponseEntity<>("Éxito al completar los campos", HttpStatus.OK);
         }else {
-            return new ResponseEntity<>("El empleado no existe", HttpStatus.OK);
+            return new ResponseEntity<>("Cuenta inexistente", HttpStatus.OK);
+        }
+    }
+    @PostMapping("/fill/vac")
+    public ResponseEntity<?> persistVaccinated(@RequestBody VacunaDTO dto) {
+        Optional<Vacuna> vacuna = vacunaService.findByIdCedula(dto.getIdCedula());
+        if(!vacuna.isPresent()){
+            return new ResponseEntity<>(vacunaService.persist(dto), HttpStatus.OK);
+        }else {
+            return new ResponseEntity<>("El registro relacionado a la vacuna del empleado ya existe", HttpStatus.OK);
         }
     }
 }

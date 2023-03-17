@@ -1,4 +1,4 @@
-package com.example.Challenge.service;
+package com.example.Challenge.service.Empleado;
 
 import com.example.Challenge.model.entity.Empleado.Empleado;
 import com.example.Challenge.model.pojo.dto.Empleado.EmpleadoDTO;

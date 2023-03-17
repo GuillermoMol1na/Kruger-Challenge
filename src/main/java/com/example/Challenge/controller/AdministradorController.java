@@ -1,10 +1,12 @@
 package com.example.Challenge.controller;
 
 import com.example.Challenge.model.entity.Empleado.Empleado;
+import com.example.Challenge.model.entity.Empleado.Vacuna;
 import com.example.Challenge.model.pojo.dto.Empleado.EmpleadoDTO;
 import com.example.Challenge.model.pojo.vo.Empleado.EmpleadoVO;
 import com.example.Challenge.model.repository.EmpleadoRepository;
-import com.example.Challenge.service.AdministradorService;
+import com.example.Challenge.service.Administrador.AdministradorService;
+import com.example.Challenge.service.Vacuna.VacunaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,12 +16,14 @@ import java.util.List;
 import java.util.Optional;
 @RestController
 @RequestMapping("/challenge")
-public class ChallengeController {
+public class AdministradorController {
     private final AdministradorService administratorService;
+    private final VacunaService vacunaService;
 
     @Autowired
-    public ChallengeController(AdministradorService administradorService, EmpleadoRepository empleadoRepository) {
+    public AdministradorController(AdministradorService administradorService, EmpleadoRepository empleadoRepository, VacunaService vacunaService) {
         this.administratorService = administradorService;
+        this.vacunaService = vacunaService;
     }
 
     @GetMapping("/administrador/emp")
@@ -97,6 +101,10 @@ public class ChallengeController {
         Optional<Empleado> empleado = administratorService.findByIdEmpleado(id);
         if(empleado.isPresent()){
             administratorService.delete(empleado.get());
+            Optional<Vacuna> vacuna = vacunaService.findByIdCedula(empleado.get().getCedula());
+            if(vacuna.isPresent()) {
+                vacunaService.delete(vacuna.get());
+            }
             return  new ResponseEntity<>(HttpStatus.OK);
         }
         else {

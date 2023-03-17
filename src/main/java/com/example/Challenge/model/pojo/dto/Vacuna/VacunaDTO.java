@@ -1,4 +1,4 @@
-package com.example.Challenge.model.pojo.dto.Empleado;
+package com.example.Challenge.model.pojo.dto.Vacuna;
 
 import jakarta.persistence.Column;
 import lombok.Getter;
