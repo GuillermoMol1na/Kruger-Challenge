@@ -12,8 +12,8 @@ public class Administrador {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
         private int id;
-        @Column(name="user")
-        private String user;
+        @Column(name="usad")
+        private String usad;
         @Column(name="passwor")
         private String passwor;
 }

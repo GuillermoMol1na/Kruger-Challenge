@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -29,6 +30,140 @@ public class AdministradorSErviceImpl implements AdministradorService{
             listResult.add(empleadoToVO(entity));
         }
         return  listResult;
+    }
+    @Override
+    public List<EmpleadoVO> findAllEmpVaccinated() {
+        List<Object[]> listOrigin= repository.findAllEmpVaccinated();
+        List<EmpleadoVO> listResult= new ArrayList<>(listOrigin.size());
+        for (Object[] object : listOrigin) {
+            EmpleadoVO vo = new EmpleadoVO();
+            vo.setId((Integer) object[0]);
+            vo.setCedula((Integer) object[1]);
+            vo.setNombres((String) object[2]);
+            vo.setApellidos((String) object[3]);
+            vo.setCorreo((String) object[4]);
+            vo.setFechaNacimiento((Date) object[5]);
+            vo.setDireccion((String) object[6]);
+            vo.setTelefono((Integer) object[7]);
+            vo.setEstadoVacunacion((Boolean) object[8]);
+            vo.setTipoVacuna((String) object[9]);
+            vo.setFechaVacunacion((Date) object[10]);
+            vo.setNumeroDosis((Integer) object[11]);
+            listResult.add(vo);
+        }
+        return listResult;
+    }
+
+    @Override
+    public List<EmpleadoVO> findAllEmpNotVaccinated() {
+        List<Object[]> listOrigin= repository.findAllEmpNotVaccinated();
+        List<EmpleadoVO> listResult= new ArrayList<>(listOrigin.size());
+        for (Object[] object : listOrigin) {
+            EmpleadoVO vo = new EmpleadoVO();
+            vo.setId((Integer) object[0]);
+            vo.setCedula((Integer) object[1]);
+            vo.setNombres((String) object[2]);
+            vo.setApellidos((String) object[3]);
+            vo.setCorreo((String) object[4]);
+            vo.setFechaNacimiento((Date) object[5]);
+            vo.setDireccion((String) object[6]);
+            vo.setTelefono((Integer) object[7]);
+            vo.setEstadoVacunacion((Boolean) object[8]);
+            listResult.add(vo);
+        }
+        return listResult;
+    }
+
+    @Override
+    public List<EmpleadoVO> findAllEmpVaccinatedSputnik() {
+        List<Object[]> listOrigin= repository.findAllEmpVaccinatedSputnik();
+        List<EmpleadoVO> listResult= new ArrayList<>(listOrigin.size());
+        for (Object[] object : listOrigin) {
+            EmpleadoVO vo = new EmpleadoVO();
+            vo.setId((Integer) object[0]);
+            vo.setCedula((Integer) object[1]);
+            vo.setNombres((String) object[2]);
+            vo.setApellidos((String) object[3]);
+            vo.setCorreo((String) object[4]);
+            vo.setFechaNacimiento((Date) object[5]);
+            vo.setDireccion((String) object[6]);
+            vo.setTelefono((Integer) object[7]);
+            vo.setEstadoVacunacion((Boolean) object[8]);
+            vo.setTipoVacuna((String) object[9]);
+            vo.setFechaVacunacion((Date) object[10]);
+            vo.setNumeroDosis((Integer) object[11]);
+            listResult.add(vo);
+        }
+        return listResult;
+    }
+    @Override
+    public List<EmpleadoVO> findAllEmpVaccinatedAstra() {
+        List<Object[]> listOrigin= repository.findAllEmpVaccinatedAstra();
+        List<EmpleadoVO> listResult= new ArrayList<>(listOrigin.size());
+        for (Object[] object : listOrigin) {
+            EmpleadoVO vo = new EmpleadoVO();
+            vo.setId((Integer) object[0]);
+            vo.setCedula((Integer) object[1]);
+            vo.setNombres((String) object[2]);
+            vo.setApellidos((String) object[3]);
+            vo.setCorreo((String) object[4]);
+            vo.setFechaNacimiento((Date) object[5]);
+            vo.setDireccion((String) object[6]);
+            vo.setTelefono((Integer) object[7]);
+            vo.setEstadoVacunacion((Boolean) object[8]);
+            vo.setTipoVacuna((String) object[9]);
+            vo.setFechaVacunacion((Date) object[10]);
+            vo.setNumeroDosis((Integer) object[11]);
+            listResult.add(vo);
+        }
+        return listResult;
+    }
+
+
+    @Override
+    public List<EmpleadoVO> findAllEmpVaccinatedPfzier() {
+        List<Object[]> listOrigin= repository.findAllEmpVaccinatedPfzier();
+        List<EmpleadoVO> listResult= new ArrayList<>(listOrigin.size());
+        for (Object[] object : listOrigin) {
+            EmpleadoVO vo = new EmpleadoVO();
+            vo.setId((Integer) object[0]);
+            vo.setCedula((Integer) object[1]);
+            vo.setNombres((String) object[2]);
+            vo.setApellidos((String) object[3]);
+            vo.setCorreo((String) object[4]);
+            vo.setFechaNacimiento((Date) object[5]);
+            vo.setDireccion((String) object[6]);
+            vo.setTelefono((Integer) object[7]);
+            vo.setEstadoVacunacion((Boolean) object[8]);
+            vo.setTipoVacuna((String) object[9]);
+            vo.setFechaVacunacion((Date) object[10]);
+            vo.setNumeroDosis((Integer) object[11]);
+            listResult.add(vo);
+        }
+        return listResult;
+    }
+
+    @Override
+    public List<EmpleadoVO> findAllEmpVaccinatedJhonson() {
+        List<Object[]> listOrigin= repository.findAllEmpVaccinatedJhonson();
+        List<EmpleadoVO> listResult= new ArrayList<>(listOrigin.size());
+        for (Object[] object : listOrigin) {
+            EmpleadoVO vo = new EmpleadoVO();
+            vo.setId((Integer) object[0]);
+            vo.setCedula((Integer) object[1]);
+            vo.setNombres((String) object[2]);
+            vo.setApellidos((String) object[3]);
+            vo.setCorreo((String) object[4]);
+            vo.setFechaNacimiento((Date) object[5]);
+            vo.setDireccion((String) object[6]);
+            vo.setTelefono((Integer) object[7]);
+            vo.setEstadoVacunacion((Boolean) object[8]);
+            vo.setTipoVacuna((String) object[9]);
+            vo.setFechaVacunacion((Date) object[10]);
+            vo.setNumeroDosis((Integer) object[11]);
+            listResult.add(vo);
+        }
+        return listResult;
     }
 
     @Override

@@ -4,11 +4,13 @@ import jakarta.persistence.Column;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.Date;
+
 @Getter
 @Setter
 public class VacunaDTO {
     private int idCedula;
-    private String idTipoVacuna;
-    private String fechaVacunacion;
+    private int idTipoVacuna;
+    private Date fechaVacunacion;
     private int numeroDosis;
 }

@@ -7,6 +7,6 @@ import lombok.Setter;
 @Setter
 public class AdministradorVO {
     private int id;
-    private String user;
+    private String usad;
     private String passwor;
 }

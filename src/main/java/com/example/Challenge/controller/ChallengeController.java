@@ -3,6 +3,7 @@ package com.example.Challenge.controller;
 import com.example.Challenge.model.entity.Empleado.Empleado;
 import com.example.Challenge.model.pojo.dto.Empleado.EmpleadoDTO;
 import com.example.Challenge.model.pojo.vo.Empleado.EmpleadoVO;
+import com.example.Challenge.model.repository.EmpleadoRepository;
 import com.example.Challenge.service.AdministradorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,19 +18,44 @@ public class ChallengeController {
     private final AdministradorService administratorService;
 
     @Autowired
-    public ChallengeController(AdministradorService administradorService) {
+    public ChallengeController(AdministradorService administradorService, EmpleadoRepository empleadoRepository) {
         this.administratorService = administradorService;
-    }
-
-    @GetMapping("/algo")
-    public ResponseEntity<?> algo(){
-        return  new ResponseEntity<>("algo", HttpStatus.OK);
     }
 
     @GetMapping("/administrador/emp")
     public ResponseEntity<?> findAllEmpleados(){
         List<EmpleadoVO> empleados = administratorService.findAllEmpleados();
         return  new ResponseEntity<>(empleados, HttpStatus.OK);
+    }
+    @GetMapping("/administrador/emp/vacunados")
+    public ResponseEntity<?> findAllEmpVaccinated(){
+        List<EmpleadoVO> empleadosvac = administratorService.findAllEmpVaccinated();
+        return  new ResponseEntity<>(empleadosvac, HttpStatus.OK);
+    }
+    @GetMapping("/administrador/emp/novacunados")
+    public ResponseEntity<?> findAllEmpNotVaccinated(){
+        List<EmpleadoVO> empleadosvac = administratorService.findAllEmpNotVaccinated();
+        return  new ResponseEntity<>(empleadosvac, HttpStatus.OK);
+    }
+    @GetMapping("/administrador/emp/vacunados/sputnik")
+    public ResponseEntity<?> findAllEmpVaccinatedSputnik(){
+        List<EmpleadoVO> empleadosvac = administratorService.findAllEmpVaccinatedSputnik();
+        return  new ResponseEntity<>(empleadosvac, HttpStatus.OK);
+    }
+    @GetMapping("/administrador/emp/vacunados/astra")
+    public ResponseEntity<?> findAllEmpVaccinatedAstra(){
+        List<EmpleadoVO> empleadosvac = administratorService.findAllEmpVaccinatedAstra();
+        return  new ResponseEntity<>(empleadosvac, HttpStatus.OK);
+    }
+    @GetMapping("/administrador/emp/vacunados/pfzier")
+    public ResponseEntity<?> findAllEmpVaccinatedPfzier(){
+        List<EmpleadoVO> empleadosvac = administratorService.findAllEmpVaccinatedPfzier();
+        return  new ResponseEntity<>(empleadosvac, HttpStatus.OK);
+    }
+    @GetMapping("/administrador/emp/vacunados/jhon")
+    public ResponseEntity<?> findAllEmpVaccinatedJhonson(){
+        List<EmpleadoVO> empleadosvac = administratorService.findAllEmpVaccinatedJhonson();
+        return  new ResponseEntity<>(empleadosvac, HttpStatus.OK);
     }
     @GetMapping("/administrador/{id}")
     public ResponseEntity<?> findbyIdEmpleado(@PathVariable("id") int id){

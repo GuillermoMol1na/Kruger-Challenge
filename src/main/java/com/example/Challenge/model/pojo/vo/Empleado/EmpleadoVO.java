@@ -17,11 +17,11 @@ public class EmpleadoVO {
     private Date fechaNacimiento;
     private String direccion;
     private int telefono;
-    private String estadoVacunacion;
+    private boolean estadoVacunacion;
     private String usuario;
     private String password;
     private String TipoVacuna;
-    private String fechaVacunacion;
+    private Date fechaVacunacion;
     private int numeroDosis;
 
 }
