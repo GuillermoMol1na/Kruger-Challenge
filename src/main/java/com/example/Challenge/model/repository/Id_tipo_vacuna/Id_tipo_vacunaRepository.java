@@ -1,7 +1,6 @@
-package com.example.Challenge.model.repository;
+package com.example.Challenge.model.repository.Id_tipo_vacuna;
 
-import com.example.Challenge.model.entity.Empleado.Empleado;
-import com.example.Challenge.model.entity.Empleado.Id_tipo_vacuna;
+import com.example.Challenge.model.entity.Id_tipo_Vacuna.Id_tipo_vacuna;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -14,4 +13,7 @@ public interface Id_tipo_vacunaRepository extends JpaRepository<Id_tipo_vacuna, 
 
     @Query("SELECT i FROM Id_tipo_vacuna i WHERE i.id = :id")
     Optional<Id_tipo_vacuna> findById(@Param("id") int id);
+
+    @Query("SELECT i FROM Id_tipo_vacuna i WHERE i.name = :name")
+    Optional<Id_tipo_vacuna> findByName(@Param("name") String name);
 }

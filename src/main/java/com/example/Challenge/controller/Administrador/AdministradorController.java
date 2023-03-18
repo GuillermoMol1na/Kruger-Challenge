@@ -1,10 +1,9 @@
-package com.example.Challenge.controller;
+package com.example.Challenge.controller.Administrador;
 
 import com.example.Challenge.model.entity.Empleado.Empleado;
-import com.example.Challenge.model.entity.Empleado.Vacuna;
+import com.example.Challenge.model.entity.Vacuna.Vacuna;
 import com.example.Challenge.model.pojo.dto.Empleado.EmpleadoDTO;
 import com.example.Challenge.model.pojo.vo.Empleado.EmpleadoVO;
-import com.example.Challenge.model.repository.EmpleadoRepository;
 import com.example.Challenge.service.Administrador.AdministradorService;
 import com.example.Challenge.service.Vacuna.VacunaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,53 +14,53 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 @RestController
-@RequestMapping("/challenge")
+@RequestMapping("/administrador")
 public class AdministradorController {
     private final AdministradorService administratorService;
     private final VacunaService vacunaService;
 
     @Autowired
-    public AdministradorController(AdministradorService administradorService, EmpleadoRepository empleadoRepository, VacunaService vacunaService) {
+    public AdministradorController(AdministradorService administradorService, VacunaService vacunaService) {
         this.administratorService = administradorService;
         this.vacunaService = vacunaService;
     }
 
-    @GetMapping("/administrador/emp")
+    @GetMapping("/emp")
     public ResponseEntity<?> findAllEmpleados(){
         List<EmpleadoVO> empleados = administratorService.findAllEmpleados();
         return  new ResponseEntity<>(empleados, HttpStatus.OK);
     }
-    @GetMapping("/administrador/emp/vacunados")
+    @GetMapping("/emp/vacunados")
     public ResponseEntity<?> findAllEmpVaccinated(){
         List<EmpleadoVO> empleadosvac = administratorService.findAllEmpVaccinated();
         return  new ResponseEntity<>(empleadosvac, HttpStatus.OK);
     }
-    @GetMapping("/administrador/emp/novacunados")
+    @GetMapping("/emp/novacunados")
     public ResponseEntity<?> findAllEmpNotVaccinated(){
         List<EmpleadoVO> empleadosvac = administratorService.findAllEmpNotVaccinated();
         return  new ResponseEntity<>(empleadosvac, HttpStatus.OK);
     }
-    @GetMapping("/administrador/emp/vacunados/sputnik")
+    @GetMapping("/emp/vacunados/sputnik")
     public ResponseEntity<?> findAllEmpVaccinatedSputnik(){
         List<EmpleadoVO> empleadosvac = administratorService.findAllEmpVaccinatedSputnik();
         return  new ResponseEntity<>(empleadosvac, HttpStatus.OK);
     }
-    @GetMapping("/administrador/emp/vacunados/astra")
+    @GetMapping("/emp/vacunados/astra")
     public ResponseEntity<?> findAllEmpVaccinatedAstra(){
         List<EmpleadoVO> empleadosvac = administratorService.findAllEmpVaccinatedAstra();
         return  new ResponseEntity<>(empleadosvac, HttpStatus.OK);
     }
-    @GetMapping("/administrador/emp/vacunados/pfzier")
+    @GetMapping("/emp/vacunados/pfzier")
     public ResponseEntity<?> findAllEmpVaccinatedPfzier(){
         List<EmpleadoVO> empleadosvac = administratorService.findAllEmpVaccinatedPfzier();
         return  new ResponseEntity<>(empleadosvac, HttpStatus.OK);
     }
-    @GetMapping("/administrador/emp/vacunados/jhon")
+    @GetMapping("/emp/vacunados/jhon")
     public ResponseEntity<?> findAllEmpVaccinatedJhonson(){
         List<EmpleadoVO> empleadosvac = administratorService.findAllEmpVaccinatedJhonson();
         return  new ResponseEntity<>(empleadosvac, HttpStatus.OK);
     }
-    @GetMapping("/administrador/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<?> findbyIdEmpleado(@PathVariable("id") int id){
         Optional<EmpleadoVO> empleado = administratorService.findByIdEmpleadoVO(id);
         if(empleado.isPresent()){
@@ -71,7 +70,7 @@ public class AdministradorController {
             return  new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
     }
-    @PostMapping("/administrador")
+    @PostMapping("/emp/reg")
     public ResponseEntity<?> persist(@RequestBody EmpleadoDTO dto) {
         Optional<EmpleadoVO> existentEmpleado = administratorService.findByCedula(dto.getCedula());
         if(!existentEmpleado.isPresent()) {
@@ -82,7 +81,7 @@ public class AdministradorController {
         }
 
     }
-    @PutMapping("/administrador/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<?> persist(@PathVariable("id") int id, @RequestBody EmpleadoDTO dto) {
     Optional<Empleado> empleado = administratorService.findByIdEmpleado(id);
         if(empleado.isPresent()){
@@ -96,12 +95,12 @@ public class AdministradorController {
             return new ResponseEntity<>("El empleado no existe", HttpStatus.OK);
         }
     }
-    @DeleteMapping("/administrador/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteById(@PathVariable("id") int id){
         Optional<Empleado> empleado = administratorService.findByIdEmpleado(id);
         if(empleado.isPresent()){
-            administratorService.delete(empleado.get());
             Optional<Vacuna> vacuna = vacunaService.findByIdCedula(empleado.get().getCedula());
+            administratorService.delete(empleado.get());
             if(vacuna.isPresent()) {
                 vacunaService.delete(vacuna.get());
             }

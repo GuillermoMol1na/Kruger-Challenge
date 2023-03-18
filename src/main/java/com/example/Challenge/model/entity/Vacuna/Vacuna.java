@@ -1,4 +1,4 @@
-package com.example.Challenge.model.entity.Empleado;
+package com.example.Challenge.model.entity.Vacuna;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -16,6 +16,7 @@ public class Vacuna {
     private int id;
     @Column(name="id_cedula")
     private int idCedula;
+
     @Column(name="id_tipo_vacuna")
     private int idTipoVacuna;
     @Column(name="fecha_vacunacion")

@@ -1,13 +1,11 @@
 package com.example.Challenge.service.Empleado;
 
 import com.example.Challenge.model.entity.Empleado.Empleado;
-import com.example.Challenge.model.entity.Empleado.Id_tipo_vacuna;
-import com.example.Challenge.model.entity.Empleado.Vacuna;
 import com.example.Challenge.model.pojo.dto.Empleado.EmpleadoDTO;
 import com.example.Challenge.model.pojo.vo.Empleado.EmpleadoVO;
-import com.example.Challenge.model.repository.EmpleadoRepository;
-import com.example.Challenge.model.repository.Id_tipo_vacunaRepository;
-import com.example.Challenge.model.repository.VacunaRepository;
+import com.example.Challenge.model.repository.Empleado.EmpleadoRepository;
+import com.example.Challenge.model.repository.Id_tipo_vacuna.Id_tipo_vacunaRepository;
+import com.example.Challenge.model.repository.Vacuna.VacunaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

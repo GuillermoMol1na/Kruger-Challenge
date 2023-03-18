@@ -1,4 +1,4 @@
-package com.example.Challenge.model.entity.Empleado;
+package com.example.Challenge.model.entity.Id_tipo_Vacuna;
 
 import jakarta.persistence.*;
 import lombok.Getter;

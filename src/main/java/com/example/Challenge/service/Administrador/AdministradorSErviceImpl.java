@@ -3,7 +3,7 @@ package com.example.Challenge.service.Administrador;
 import com.example.Challenge.model.entity.Empleado.Empleado;
 import com.example.Challenge.model.pojo.dto.Empleado.EmpleadoDTO;
 import com.example.Challenge.model.pojo.vo.Empleado.EmpleadoVO;
-import com.example.Challenge.model.repository.EmpleadoRepository;
+import com.example.Challenge.model.repository.Empleado.EmpleadoRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
