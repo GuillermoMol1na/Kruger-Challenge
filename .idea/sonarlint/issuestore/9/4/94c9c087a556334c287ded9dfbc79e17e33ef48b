@@ -1,0 +1,8 @@
+
+k	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‚£–÷úÿÿÿÿ
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ßöŸµıÿÿÿÿ
+u	java:S116"`Rename this field "tipo_vacunaRepository" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(í¸íÊ
+P
+java:S1068"4Remove this unused "vacunaRepository" private field.(øÛÈ&8òÉüŒï0
+V
+java:S1068"9Remove this unused "tipo_vacunaRepository" private field.(í¸íÊ8òÉüŒï0
