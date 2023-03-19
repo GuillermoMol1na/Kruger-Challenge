@@ -1,7 +1,9 @@
 package com.example.Challenge.controller.Empleado;
 
+import com.example.Challenge.commons.ResultResponse;
 import com.example.Challenge.model.entity.Empleado.Empleado;
 import com.example.Challenge.model.entity.Vacuna.Vacuna;
+import com.example.Challenge.model.enums.HttpResponseMessage;
 import com.example.Challenge.model.pojo.dto.Vacuna.VacunaDTO;
 import com.example.Challenge.model.pojo.vo.Empleado.EmpleadoVO;
 import com.example.Challenge.service.Empleado.EmpleadoService;
@@ -30,6 +32,7 @@ public class EmpleadoController {
     @PatchMapping("/fill/{id}")
     public ResponseEntity<?> persist(@PathVariable("id") int id, @RequestBody EmpleadoVO vo) {
         Optional<Empleado> empleado = empleadoService.findByIdEmpleado(id);
+        Integer thevaccine = tipoVacunaService.getIdTipoVac(vo.getTipoVacuna());
         if(empleado.isPresent()){
             empleado.get().setFechaNacimiento(vo.getFechaNacimiento());
             empleado.get().setDireccion(vo.getDireccion());
@@ -40,22 +43,22 @@ public class EmpleadoController {
                 VacunaDTO dto = new VacunaDTO();
                 dto.setFechaVacunacion(vo.getFechaVacunacion());
                 dto.setIdCedula(vo.getCedula());
-                dto.setIdTipoVacuna(tipoVacunaService.getIdTipoVac(vo.getTipoVacuna()));
+                dto.setIdTipoVacuna(thevaccine);
                 dto.setNumeroDosis(vo.getNumeroDosis());
                 vacunaService.persist(dto);
             }
-            return new ResponseEntity<>("Éxito al completar los campos", HttpStatus.OK);
+            return new ResponseEntity<>(ResultResponse.builder().status(true).message(HttpResponseMessage.UPDATE_SUCCESSFUL.getValue()).data("").build(), HttpStatus.OK);
         }else {
-            return new ResponseEntity<>("Cuenta inexistente", HttpStatus.OK);
+            return new ResponseEntity<>(ResultResponse.builder().status(true).message(HttpResponseMessage.NOT_FOUND_RECORD.getValue()).data(thevaccine).build(), HttpStatus.OK);
         }
     }
     @PostMapping("/fill/vac")
     public ResponseEntity<?> persistVaccinated(@RequestBody VacunaDTO dto) {
         Optional<Vacuna> vacuna = vacunaService.findByIdCedula(dto.getIdCedula());
         if(!vacuna.isPresent()){
-            return new ResponseEntity<>(vacunaService.persist(dto), HttpStatus.OK);
+            return new ResponseEntity<>(ResultResponse.builder().status(true).message(HttpResponseMessage.PERSIST_SUCCESSFUL.getValue()).data(vacunaService.persist(dto)).build(), HttpStatus.OK);
         }else {
-            return new ResponseEntity<>("El registro relacionado a la vacuna del empleado ya existe", HttpStatus.OK);
+            return new ResponseEntity<>(ResultResponse.builder().status(true).message("El registro relacionado a la vacuna del empleado ya existe").data("").build(), HttpStatus.OK);
         }
     }
 }

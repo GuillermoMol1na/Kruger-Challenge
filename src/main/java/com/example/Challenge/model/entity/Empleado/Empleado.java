@@ -18,16 +18,12 @@ public class Empleado {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @NotEmpty
     @Column(name="cedula",precision = 11, scale = 0)
     private int cedula;
-    @NotEmpty
     @Column(name="nombres")
     private String nombres;
-    @NotEmpty
     @Column(name="apellidos")
     private String apellidos;
-    @NotEmpty
     @Email
     @Column(name="correo")
     private String correo;

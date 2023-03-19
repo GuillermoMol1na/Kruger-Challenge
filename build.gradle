@@ -22,15 +22,23 @@ repositories {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-	implementation 'org.springframework.boot:spring-boot-starter-web-services'
-	implementation group: 'io.springfox', name: 'springfox-swagger2', version: '2.9.2'
-	compileOnly 'org.projectlombok:lombok'
-	implementation group: 'org.hibernate', name: 'hibernate-validator', version: '6.0.10.Final'
+	/*testImplementation 'junit:junit:4.13.1'*/
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	implementation 'org.springframework.boot:spring-boot-starter-web-services'
 	runtimeOnly 'org.postgresql:postgresql'
+	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
 	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	implementation 'io.springfox:springfox-boot-starter:3.0.0'
+	implementation group: 'org.hibernate', name: 'hibernate-validator', version: '6.0.10.Final'
+
+	implementation 'io.jsonwebtoken:jjwt:0.9.1'
+	implementation 'org.springframework.boot:spring-boot-configuration-processor'
+	implementation group: 'io.springfox', name: 'springfox-swagger2', version: '2.9.2'
+
+
+
 }
 
 tasks.named('test') {
