@@ -9,7 +9,7 @@ import java.util.Date;
 @Getter
 @Setter
 public class EmpleadoDTO {
-    private int cedula;
+    private String cedula;
     private String nombres;
     private String apellidos;
     private String correo;

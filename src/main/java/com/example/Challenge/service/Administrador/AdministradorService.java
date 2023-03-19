@@ -57,7 +57,7 @@ public interface AdministradorService {
      * Obtiene al Value Object de un Empleado mediante su Cédula de identidad
      * @return Empleado mediante su <b1>Cedula de identidad</b1>
      */
-    Optional<EmpleadoVO> findByCedula(int cedula);
+    Optional<EmpleadoVO> findByCedula(String cedula);
     /**
      * Elimina a un Empleado
      * @return Nada, el Empleado eliminado

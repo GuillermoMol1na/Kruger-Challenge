@@ -15,5 +15,5 @@ public interface VacunaRepository extends JpaRepository<Vacuna, Integer> {
     Optional<Vacuna> findById(@Param("id") int id);
 
     @Query(value = "SELECT v FROM Vacuna v WHERE v.id_cedula = :id_cedula",nativeQuery = true)
-    Optional<Vacuna> findByIdCedula(@Param("id_cedula") int id_cedula);
+    Optional<Vacuna> findByIdCedula(@Param("id_cedula") String id_cedula);
 }

@@ -16,7 +16,7 @@ public interface EmpleadoRepository extends JpaRepository<Empleado, Integer> {
     List<Empleado> findAllEmpleados();
 
     @Query("SELECT e FROM Empleado e WHERE e.cedula = :cedula")
-    Optional<Empleado> findByCedula(@Param("cedula") int cedula);
+    Optional<Empleado> findByCedula(@Param("cedula") String cedula);
 
     @Query(value = "SELECT E.id, E.cedula, E.nombres, E.apellidos,E.correo,E.fecha_nacimiento,\n" +
             "E.direccion, E.telefono, E.estado_vacunacion, I.\"name\", V.fecha_vacunacion, V.numero_dosis\n" +

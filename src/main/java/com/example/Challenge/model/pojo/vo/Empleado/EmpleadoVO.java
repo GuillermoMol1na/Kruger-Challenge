@@ -10,7 +10,7 @@ import java.util.Date;
 @Setter
 public class EmpleadoVO {
     private int id;
-    private int cedula;
+    private String cedula;
     private String nombres;
     private String apellidos;
     private String correo;

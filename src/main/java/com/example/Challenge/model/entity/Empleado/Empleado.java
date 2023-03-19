@@ -18,8 +18,8 @@ public class Empleado {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Column(name="cedula",precision = 11, scale = 0)
-    private int cedula;
+    @Column(name="cedula")
+    private String cedula;
     @Column(name="nombres")
     private String nombres;
     @Column(name="apellidos")

@@ -23,6 +23,7 @@ import java.util.regex.Pattern;
 public class AdministradorController {
 
      Pattern pat= Pattern.compile("[^a-z0-9 ]", Pattern.CASE_INSENSITIVE);
+     Pattern patCed=Pattern.compile("[0-9 ]", Pattern.CASE_INSENSITIVE);
 
 
     private final AdministradorService administratorService;
@@ -84,7 +85,7 @@ public class AdministradorController {
         Optional<EmpleadoVO> existentEmpleado = administratorService.findByCedula(dto.getCedula());
         if(!existentEmpleado.isPresent()) {
             if(!pat.matcher(dto.getNombres()).find() && !pat.matcher(dto.getApellidos()).find()) {
-                if(String.valueOf(dto.getCedula()).length() !=10){
+                if(dto.getCedula().length() !=10 && patCed.matcher(dto.getCedula()).find()){
                     return new ResponseEntity<>(ResultResponse.builder().status(true).message(HttpResponseMessage.CED_MUST_BE_10.getValue()).data("").build(), HttpStatus.OK);
                 }
                 else {

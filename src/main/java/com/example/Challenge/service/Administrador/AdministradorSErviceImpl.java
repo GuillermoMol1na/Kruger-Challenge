@@ -38,7 +38,7 @@ public class AdministradorSErviceImpl implements AdministradorService{
         for (Object[] object : listOrigin) {
             EmpleadoVO vo = new EmpleadoVO();
             vo.setId((Integer) object[0]);
-            vo.setCedula((Integer) object[1]);
+            vo.setCedula((String) object[1]);
             vo.setNombres((String) object[2]);
             vo.setApellidos((String) object[3]);
             vo.setCorreo((String) object[4]);
@@ -61,7 +61,7 @@ public class AdministradorSErviceImpl implements AdministradorService{
         for (Object[] object : listOrigin) {
             EmpleadoVO vo = new EmpleadoVO();
             vo.setId((Integer) object[0]);
-            vo.setCedula((Integer) object[1]);
+            vo.setCedula((String) object[1]);
             vo.setNombres((String) object[2]);
             vo.setApellidos((String) object[3]);
             vo.setCorreo((String) object[4]);
@@ -81,7 +81,7 @@ public class AdministradorSErviceImpl implements AdministradorService{
         for (Object[] object : listOrigin) {
             EmpleadoVO vo = new EmpleadoVO();
             vo.setId((Integer) object[0]);
-            vo.setCedula((Integer) object[1]);
+            vo.setCedula((String) object[1]);
             vo.setNombres((String) object[2]);
             vo.setApellidos((String) object[3]);
             vo.setCorreo((String) object[4]);
@@ -103,7 +103,7 @@ public class AdministradorSErviceImpl implements AdministradorService{
         for (Object[] object : listOrigin) {
             EmpleadoVO vo = new EmpleadoVO();
             vo.setId((Integer) object[0]);
-            vo.setCedula((Integer) object[1]);
+            vo.setCedula((String) object[1]);
             vo.setNombres((String) object[2]);
             vo.setApellidos((String) object[3]);
             vo.setCorreo((String) object[4]);
@@ -127,7 +127,7 @@ public class AdministradorSErviceImpl implements AdministradorService{
         for (Object[] object : listOrigin) {
             EmpleadoVO vo = new EmpleadoVO();
             vo.setId((Integer) object[0]);
-            vo.setCedula((Integer) object[1]);
+            vo.setCedula((String) object[1]);
             vo.setNombres((String) object[2]);
             vo.setApellidos((String) object[3]);
             vo.setCorreo((String) object[4]);
@@ -150,7 +150,7 @@ public class AdministradorSErviceImpl implements AdministradorService{
         for (Object[] object : listOrigin) {
             EmpleadoVO vo = new EmpleadoVO();
             vo.setId((Integer) object[0]);
-            vo.setCedula((Integer) object[1]);
+            vo.setCedula((String) object[1]);
             vo.setNombres((String) object[2]);
             vo.setApellidos((String) object[3]);
             vo.setCorreo((String) object[4]);
@@ -177,7 +177,7 @@ public class AdministradorSErviceImpl implements AdministradorService{
     }
 
     @Override
-    public Optional<EmpleadoVO> findByCedula(int cedula) {
+    public Optional<EmpleadoVO> findByCedula(String cedula) {
         Optional<Empleado> entity = repository.findByCedula(cedula);
         return entity.map(this::empleadoToVO);
     }

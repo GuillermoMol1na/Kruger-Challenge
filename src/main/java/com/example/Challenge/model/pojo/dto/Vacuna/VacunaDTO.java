@@ -9,7 +9,7 @@ import java.util.Date;
 @Getter
 @Setter
 public class VacunaDTO {
-    private int idCedula;
+    private String idCedula;
     private int idTipoVacuna;
     private Date fechaVacunacion;
     private int numeroDosis;

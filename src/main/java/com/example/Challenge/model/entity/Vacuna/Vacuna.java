@@ -15,7 +15,7 @@ public class Vacuna {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column(name="id_cedula")
-    private int idCedula;
+    private String idCedula;
 
     @Column(name="id_tipo_vacuna")
     private int idTipoVacuna;

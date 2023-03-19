@@ -18,7 +18,7 @@ public class VacunaServiceImpl implements VacunaService {
 
 
     @Override
-    public Optional<Vacuna> findByIdCedula(int cedula) {
+    public Optional<Vacuna> findByIdCedula(String cedula) {
         return vacunaRepository.findByIdCedula(cedula);
     }
 
